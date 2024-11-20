@@ -18,8 +18,15 @@ const blogSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "user",
     },
+    message: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );
- const Blog =model("blog",blogSchema)
- export default Blog
+
+
+
+const Blog = model("blog", blogSchema);
+export default Blog;

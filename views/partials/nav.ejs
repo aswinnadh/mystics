@@ -3,8 +3,12 @@
   <div class="menu-button"></div>
   <ul class="nav-list">
     <li><a href="/">Home</a></li>
-
-    <% if (locals.user) { %>
+    <% if (locals.user && locals.user.email === "admin@gmail.com") { %>
+      <li><a href="/blog/userdtl">Users</a></li>
+    <li><a href="/blog/addblog">Add Blog</a></li>
+    <li><a href="/"><%= user.username %></a></li>
+    <li><a href="/user/logout">Logout</a></li>
+    <% } else if (locals.user) { %>
     <li><a href="/blog/addblog">Add Blog</a></li>
     <li><a href="/"><%= user.username %></a></li>
     <li><a href="/user/logout">Logout</a></li>

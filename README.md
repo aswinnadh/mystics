@@ -1,2 +1,2 @@
-# mystics
- bloging website
+# mystic_blogs
+ Blogging application

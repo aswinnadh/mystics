@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script src="./js/userManagenemt.js" defer></script>
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <!----------------------------------nav bar--------------------------------- -->
+    <%- include('./partials/nav') %>
+    <!-- -------------------------------user details----------------------------------- -->
+     <% if(locals.user?.email=="admin@gmail.com") { %>
+        <div class="users-container" onload="handleUserSearch()">
+            <form onsubmit="return handleUserSearch(event)">
+                <input
+                  type="text"
+                  name="search"
+                  class="form-control"
+                  placeholder="search user"
+                />
+                <button type="submit" class="btn btn-sm btn-primary">search</button>
+              </form>
+
+              <div id="user-list">
+                
+              </div>
+        </div>
+    <% } else {%>
+        <h2>Only admin can access this page</h2>
+    <% } %>
+
+  </body>
+</html>

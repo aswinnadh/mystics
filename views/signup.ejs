@@ -94,6 +94,9 @@
           </div>
 
           <button type="submit">SignUp</button>
+          <% if(locals.error) { %>
+          <p><%= locals.error %></p>
+          <% } %>
           <p>welcome</p>
         </form>
       </div>
