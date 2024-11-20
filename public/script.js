@@ -100,7 +100,7 @@ function onSubmitFunction(event) {
 df
 
 window.addEventListener("load", async () => {
-  await fetch(`http://localhost:3000/admin/user?search=`)
+  await fetch(`https://mystics-production.up.railway.app/admin/user?search=`)
     .then((res) => res.json())
     .then(({ data }) => {
       populateUserData(data);
@@ -112,7 +112,7 @@ async function handleUserSearch(e) {
     e.preventDefault();
   }
   const username = e.target.elements.search.value;
-  await fetch(`http://localhost:3000/admin/user?search=${username}`)
+  await fetch(`https://mystics-production.up.railway.app/admin/user?search=${username}`)
     .then((res) => res.json())
     .then(({ data }) => {
       populateUserData(data);
