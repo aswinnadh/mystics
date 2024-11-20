@@ -1,0 +1,16 @@
+<header>
+  <a href="#" class="logo">mYsTiCs</a>
+  <div class="menu-button"></div>
+  <ul class="nav-list">
+    <li><a href="/">Home</a></li>
+
+    <% if (locals.user) { %>
+    <li><a href="/blog/addblog">Add Blog</a></li>
+    <li><a href="/"><%= user.username %></a></li>
+    <li><a href="/user/logout">Logout</a></li>
+    <% } else{ %>
+    <li><a href="/user/signin">SignIn</a></li>
+    <li><a href="/user/signup">SignUp</a></li>
+    <% } %>
+  </ul>
+</header>

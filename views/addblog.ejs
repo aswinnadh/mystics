@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+  <body class="add-blog">
+     <!----------------------------------nav bar--------------------------------- -->
+     <%- include('./partials/nav') %>
+     <!-- -------------------------------blogs----------------------------------- -->
+    <section class="addblog-container">
+      <div class="addblog-card">
+        <form action="/blog" method="POST" enctype="multipart/form-data">
+          
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            aria-describedby="title"
+            placeholder="Title"
+          />
+
+          <label for="coverImage" class="form-label label-button">Cover Image</label>
+          <input
+            type="file"
+            class="form-control"
+            id="coverImage"
+            name="coverImage"
+            aria-describedby="coverImage"
+          />
+
+          <label for="floatingTextarea2">Body</label>
+          <textarea
+            class="form-control"
+            name="body"
+            placeholder="write your blog here"
+            id="floatingTextarea2"
+            style="height: 100px"
+          ></textarea>
+          <button class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </section>
+    <%- include('./partials/preventback.ejs') %>
+  </body>
+</html>

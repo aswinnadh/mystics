@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+  <body class="blog">
+     <!----------------------------------nav bar--------------------------------- -->
+     <%- include('./partials/nav') %>
+     <!-- -------------------------------blogs----------------------------------- -->
+    <section class="blog-container">
+      <div class="blog-card">
+        <div class="author">
+          <% if (blog.createdBy) { %>
+            <p class="author-name"><%= blog.createdBy.username %></p>
+            <img src="<%= blog.createdBy.profileImageUrl %>" alt="" class="author-image" />
+          <% } else { %>
+            <p class="author-name">Admin</p>
+          <% } %>
+        </div>
+        <div class="only-blog">
+          <img src="<%= blog.coverImageUrl %>" alt="" class="blog-thumbnail" />
+        <h2 class="blog-title"><%= blog.title %></h2>
+        <pre class="blog-body">
+          <%= blog.body %>
+        </pre>
+        </div>
+      </div>
+      <div class="comments-card">
+
+        <h3 class="comments">Comments (<%= comments.length %>)</h3>
+
+        <% if (locals.user) { %>
+          
+          <form action="/blog/comment/<%= blog._id %>" method="post">
+            <input
+              type="text"
+              name="content"
+              class="form-control"
+              placeholder="enter your Comments"
+            />
+            <button type="submit" class="btn btn-sm btn-primary">Add</button>
+          </form>
+          
+  
+          <% comments.forEach(comment=>{ %>
+            <div class="comment">
+              <div class="commenter">
+                <% if (comment.createdBy) { %>
+                  
+                  <img src="<%= comment.createdBy.profileImageUrl %>" alt="" class="commenter-img" />
+                  <p class="commenter-name"><%= comment.createdBy.username %></p>
+                <% } else { %>
+                  <p class="commenter-name">Admin</p>
+                <% } %>
+                <% if(locals.user && locals.user.email=="admin@gmail.com") {%>
+                  <form action="/blog/comment/<%= comment._id %>?_method=DELETE" method="POST">
+                    <button type="submit">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                        fill="#e8eaed"
+                      >
+                        <path
+                          d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"
+                        />
+                      </svg>
+                    </button>
+                  </form>
+        
+                  <% } %>
+              </div>
+              <pre class="comment-body"><%= comment.content %></pre>
+            </div>
+          <% }) %>
+        <% } %>
+      </div>
+    </section>
+    
+  </body>
+</html>
